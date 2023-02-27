@@ -1,5 +1,7 @@
 package de.metro.example.swagger;
 
+import de.metro.example.swagger.data.Shelter;
+import de.metro.example.swagger.resources.PetResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -23,7 +25,7 @@ public class HelloSwaggerApplication extends Application<HelloSwaggerConfigurati
     @Override
     public void run(final HelloSwaggerConfiguration configuration,
                     final Environment environment) {
-        // TODO: implement application
+        environment.jersey().register(new PetResource( new Shelter() ) );
     }
 
 }
