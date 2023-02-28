@@ -5,6 +5,8 @@ import de.metro.example.swagger.resources.PetResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import io.federecio.dropwizard.swagger.SwaggerBundle;
+import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
 
 public class HelloSwaggerApplication extends Application<HelloSwaggerConfiguration> {
 
@@ -19,7 +21,12 @@ public class HelloSwaggerApplication extends Application<HelloSwaggerConfigurati
 
     @Override
     public void initialize(final Bootstrap<HelloSwaggerConfiguration> bootstrap) {
-        // TODO: application initialization
+        bootstrap.addBundle(new SwaggerBundle<HelloSwaggerConfiguration>() {
+            @Override
+            protected SwaggerBundleConfiguration getSwaggerBundleConfiguration(HelloSwaggerConfiguration configuration) {
+                return configuration.swagger;
+            }
+        });
     }
 
     @Override

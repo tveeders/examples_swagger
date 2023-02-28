@@ -2,9 +2,10 @@ package de.metro.example.swagger;
 
 import io.dropwizard.Configuration;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
 import org.hibernate.validator.constraints.*;
 import javax.validation.constraints.*;
 
 public class HelloSwaggerConfiguration extends Configuration {
-    // TODO: implement service configuration
+    public SwaggerBundleConfiguration swagger;
 }

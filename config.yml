@@ -2,3 +2,6 @@ logging:
   level: INFO
   loggers:
     de.metro.example: DEBUG
+
+swagger:
+  resourcePackage: de.metro.example.swagger.resources
