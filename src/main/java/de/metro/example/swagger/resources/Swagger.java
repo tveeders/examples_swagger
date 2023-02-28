@@ -8,7 +8,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.nio.charset.StandardCharsets;
 
-@Path( "/openapi.yaml" )
+@Path( "/static_openapi.yaml" )
 public class Swagger {
 
     @GET
