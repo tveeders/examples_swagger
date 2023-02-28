@@ -2,6 +2,7 @@ package de.metro.example.swagger;
 
 import de.metro.example.swagger.data.Shelter;
 import de.metro.example.swagger.resources.PetResource;
+import de.metro.example.swagger.resources.Swagger;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -33,6 +34,7 @@ public class HelloSwaggerApplication extends Application<HelloSwaggerConfigurati
     public void run(final HelloSwaggerConfiguration configuration,
                     final Environment environment) {
         environment.jersey().register(new PetResource( new Shelter() ) );
+        environment.jersey().register(new Swagger());
     }
 
 }

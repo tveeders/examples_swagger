@@ -1,0 +1,104 @@
+openapi: 3.0.1
+info:
+  title: Pet shelter service
+  description: Just a simple webservice to retrieve pet infos.
+  contact:
+    name: Timo Veeders
+    email: timo.veeders@metro.digital
+  version: 1.0.0
+  x-keywords: "Swagger, Showcase, meetup"
+  x-technologies: Java
+  x-deprecated: 2040-12-31
+servers:
+- url: localhost:8080
+  description: Development server
+paths:
+  /pet/{name}:
+    get:
+      operationId: Fetch pet by name
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Pet details.
+          content:
+            application/json; charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Pet'
+        "404":
+          description: Pet not found
+  /pet:
+    get:
+      operationId: Fetch all pets
+      responses:
+        "200":
+          description: All pet details.
+    put:
+      operationId: 'Add another pet to the '
+      requestBody:
+        content:
+          application/json; charset=UTF-8:
+            schema:
+              $ref: '#/components/schemas/Pet'
+      responses:
+        "200":
+          description: All pet details.
+components:
+  schemas:
+    Pet:
+      type: object
+      properties:
+        name:
+          type: string
+        age:
+          type: integer
+          format: int32
+        preferredFood:
+          type: array
+          items:
+            type: string
+        color:
+          type: array
+          items:
+            type: string
+            enum:
+            - BLUE
+            - BLACK
+            - WHITE
+            - BROWN
+            - DARK_BROWN
+            - GREY
+            - RED
+            - GREEN
+            - YELLOW
+        eyeColor:
+          type: string
+          enum:
+          - BLUE
+          - BLACK
+          - WHITE
+          - BROWN
+          - DARK_BROWN
+          - GREY
+          - RED
+          - GREEN
+          - YELLOW
+        hungry:
+          type: boolean
+        thirsty:
+          type: boolean
+        owner:
+          type: string
+        animalType:
+          type: string
+          enum:
+          - DOG
+          - CAT
+          - FISH
+          - RAT
+          - GUINEAPIG
+          - HORSE
