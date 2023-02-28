@@ -5,3 +5,14 @@ logging:
 
 swagger:
   resourcePackage: de.metro.example.swagger.resources
+openAPI:
+  info:
+    title: Pet shelter service
+    description: Just a simple webservice to retrieve pet infos.
+    contact:
+      name: Timo Veeders
+      email: timo.veeders@metro.digital
+    version: 1.0.0
+  servers:
+    - url: http://localhost:8080
+      description: Development server
