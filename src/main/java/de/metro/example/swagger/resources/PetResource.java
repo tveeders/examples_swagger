@@ -2,6 +2,11 @@ package de.metro.example.swagger.resources;
 
 import de.metro.example.swagger.data.Shelter;
 import de.metro.example.swagger.model.Pet;
+import io.swagger.annotations.Api;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -21,7 +26,9 @@ public class PetResource {
         this.shelter = shelter;
     }
 
-
+    @Operation( operationId = "Fetch pet by name", responses = {
+            @ApiResponse( responseCode = "200", description = "Pet details.", content = @Content( schema = @Schema( implementation = Pet.class ) ) ),
+            @ApiResponse( responseCode = "404", description = "Pet not found" ) } )
     @GET
     @Path("/{name}")
     @Produces( MediaType.APPLICATION_JSON + "; charset=UTF-8" )
@@ -33,6 +40,8 @@ public class PetResource {
         throw new NotFoundException( "Pet with name " + petName + " does not belong to our shelter" );
     }
 
+    @Operation( operationId = "Fetch all pets", responses = {
+            @ApiResponse( responseCode = "200", description = "All pet details." ) } )
     @GET
     @Path("/")
     @Produces( MediaType.APPLICATION_JSON + "; charset=UTF-8" )
@@ -40,6 +49,8 @@ public class PetResource {
         return shelter.getAnimals();
     }
 
+    @Operation( operationId = "Add another pet to the ", responses = {
+            @ApiResponse( responseCode = "200", description = "All pet details." ) } )
     @PUT
     @Path("/")
     @Consumes( MediaType.APPLICATION_JSON + "; charset=UTF-8" )
